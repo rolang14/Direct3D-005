@@ -1,0 +1,30 @@
+/////////////////////////
+// FileName : Color.ps
+////////////////////////
+
+//작성하기 전에...
+//이게 이해가 안된다면 Color.vs 코드 에 적혀있는 주석 먼저 보고오자
+
+////////////////////////
+// TYPEDEFS
+////////////////////////
+
+//.vs에서 작성하였던 픽셀 셰이더 인풋 타입과 동일하게 작성해준다.
+struct PixelInputType
+{
+	float4 position : SV_POSITION;
+	float4 color : COLOR;
+};
+
+////////////////////////
+// Pixel Shader
+////////////////////////
+
+//앞서 vs에서 계산된 픽셀 컬러를 받아 임의의 연산 후 반환하여야 하는데
+//일단은 뭐 텍스처나 기타등등 넣은게 없으니까 바로 넘겨주는 함수일 뿐이다.
+float4 ColorPixelShader(PixelInputType input) : SV_TARGET
+{
+	return input.color;
+	//문제4 밝기 0.5배 하기
+	//return input.color * 0.5;
+}
